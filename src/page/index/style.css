@@ -1,0 +1,15 @@
+.content {
+    width: 900px;
+    margin: 30px auto;
+}
+
+.mytable {
+    width: 900px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.mytable .table-header {
+    font-weight: bold;
+}
+

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <%=require('html-loader!./common/html-head.html')%>
+        <title>首页</title>
+</head>
+
+<body>
+    <%=require('html-loader!./common/nav.html')%>
+    <div class="container">
+        <div class="content">
+            <table class="table table-striped mytable">
+                <tr class="table-header">
+                    <td>用户名</td>
+                    <td>邮箱</td>
+                    <td>手机</td>
+                    <td>注册时间</td>
+                </tr>
+                <tr>
+                    <td>wastonl</td>
+                    <td>2434687093@qq.com</td>
+                    <td>15700759346</td>
+                    <td>2018-04-19</td>
+                </tr>
+                <tr>
+                    <td>wastonl</td>
+                    <td>2434687093@qq.com</td>
+                    <td>15700759346</td>
+                    <td>2018-04-19</td>
+                </tr>
+            </table>
+            <nav aria-label="Page navigation">
+                <ul class="pagination pagination-lg">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">1</a>
+                    </li>
+                    <li>
+                        <a href="#">2</a>
+                    </li>
+                    <li>
+                        <a href="#">3</a>
+                    </li>
+                    <li>
+                        <a href="#">4</a>
+                    </li>
+                    <li>
+                        <a href="#">5</a>
+                    </li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <%=require('html-loader!./common/footer.html')%>
+</body>
+
+</html>

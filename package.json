@@ -1,0 +1,28 @@
+{
+    "name": "mall-admin",
+    "version": "1.0.0",
+    "description": "毕业设计后台页面",
+    "main": "index.js",
+    "scripts": {
+        "dev": "ENVIRONMENT=dev webpack-dev-server --inline --port 9000",
+        "dev_win": "set ENVIRONMENT=dev && webpack-dev-server --inline --port 9000",
+        "dist": "ENVIRONMENT=online webpack -p",
+        "dist_win": "set ENVIRONMENT=online && webpack -p"
+    },
+    "author": "wangtao",
+    "license": "ISC",
+    "devDependencies": {
+        "css-loader": "^0.28.11",
+        "extract-text-webpack-plugin": "^3.0.2",
+        "file-loader": "^1.1.11",
+        "html-loader": "^0.5.5",
+        "html-webpack-plugin": "^3.2.0",
+        "style-loader": "^0.20.3",
+        "url-loader": "^1.0.1",
+        "webpack": "^3.5.5",
+        "webpack-dev-server": "^2.10.0"
+    },
+    "dependencies": {
+        "jquery": "^3.3.1"
+    }
+}
