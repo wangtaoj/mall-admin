@@ -1,3 +1,7 @@
-.jj {
-    background-color: red;
+.clear {
+    clear: both;
+}
+
+.link {
+    cursor: pointer;
 }

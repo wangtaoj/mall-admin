@@ -1,0 +1,73 @@
+.content {
+    width: 900px;
+    margin: 30px auto;
+}
+
+.content .title {
+    margin-bottom: 20px;
+}
+
+.content .title .input-width {
+    width: 150px;
+    margin-right: 15px;
+}
+
+.content .title .title-left {
+    float: left;
+}
+
+.content .title .title-right {
+    float: right;
+    margin-right: 22px;
+}
+
+.mytable {
+    width: 900px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.mytable .table-header {
+    font-weight: bold;
+}
+
+.myPage {
+    float: left;
+}
+
+.pageNum {
+    width: 60px;
+    height: 46px;
+    float: left;
+    margin: 20px 10px;
+}
+
+.pageNum input {
+    width: 60px;
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
+    border: 1px solid #999;
+    border-radius: 4px;
+    outline: none;
+}
+
+.cursor-style {
+    cursor: pointer;
+}
+
+.btn-width {
+    width: 60px;
+    height: 46px;
+}
+
+.btn-container {
+    width: 60px;
+    float: left;
+    margin: 20px 0px;
+}
+
+.clear {
+    clear: both;
+}
+

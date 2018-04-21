@@ -9,8 +9,89 @@
 <body>
     <%=require('html-loader!./common/nav.html')%>
         <div class="container">
-            商品列表
+            <div class="content">
+                <div class="title">
+                    <div class="input-group title-left">
+                        <select class="form-control input-width" id="type">
+                            <option value="1">按ID查询</option>
+                            <option value="0">按名字查询</option>
+                        </select>
+                        <input id="keyword" type="text" class="form-control input-width" placeholder="关键词">
+                        <button class="btn btn-primary" type="button" id="search">查询</button>
+                    </div>
+                    <div class="title-right">
+                        <button id="add" class="btn btn-primary" type="button">新增商品</button>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <table class="table table-striped mytable">
+                    <tr class="table-header">
+                        <td>ID</td>
+                        <td>名字</td>
+                        <td>价格</td>
+                        <td>状态</td>
+                        <td>操作</td>
+                    </tr>
+                </table>
+                <div>
+                    <div class="myPage">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination pagination-lg">
+                                <li id="prePage">
+                                    <a aria-label="Previous" class="cursor-style">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>... </a>
+                                </li>
+                                <li class="active">
+                                    <a id="curPage">1</a>
+                                </li>
+                                <li>
+                                    <a>... </a>
+                                </li>
+                                <li id="nextPage">
+                                    <a aria-label="Next" class="cursor-style">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="pageNum">
+                        <input id="pageNum" type="text">
+                    </div>
+                    <div class="btn-container">
+                        <button type="button" class="btn btn-primary btn-width" id="submit">GO</button>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
         </div>
-    <%=require('html-loader!./common/footer.html')%>
+        <%=require('html-loader!./common/footer.html')%>
+        <!-- 详情模态框 -->
+        <div id="detailDialog" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>One fine body&hellip;</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
 </body>
+
 </html>

@@ -13,3 +13,39 @@
     font-weight: bold;
 }
 
+.myPage {
+    float: left;
+}
+
+.pageNum {
+    width: 60px;
+    height: 46px;
+    float: left;
+    margin: 20px 10px;
+}
+
+.pageNum input {
+    width: 60px;
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
+    border: 1px solid #999;
+    border-radius: 4px;
+    outline: none;
+}
+
+.cursor-style {
+    cursor: pointer;
+}
+
+.btn-width {
+    width: 60px;
+    height: 46px;
+}
+
+.btn-container {
+    width: 60px;
+    float: left;
+    margin: 20px 0px;
+}
+

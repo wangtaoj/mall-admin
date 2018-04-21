@@ -1,0 +1,22 @@
+.content {
+    width: 300px;
+    margin: 100px auto;
+}
+
+.content .login-title {
+    width: 300px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.login-item {
+    width: 300px;
+    margin-bottom: 10px;
+    
+}
+
+.btn-width {
+    width: 300px;
+}

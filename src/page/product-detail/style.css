@@ -1,0 +1,22 @@
+.content {
+    width: 600px;
+    margin: 30px auto;
+}
+
+.content .product-item {
+    margin-top: 15px;
+}
+
+.content .width {
+    width: 400px;
+    
+}
+
+.content .input-group span {
+    border: 0px;
+    background-color: white;
+}
+
+.content .detail-span {
+    margin-left: 12px;
+}

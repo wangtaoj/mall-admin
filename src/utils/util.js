@@ -78,6 +78,23 @@ const util = {
             }
         }
         return null;
+    },
+    dateToStr: function(data) {
+        return data.getFullYear() + "-" + (data.getMonth() + 1) + "-" + 
+        data.getDate() + " " + data.getHours() + ":" + 
+        data.getMinutes() + ":" + data.getSeconds();
+    },
+    showPage: function(json) {
+        if(json.hasPreviousPage) {
+            $('#prePage').removeClass('disabled');
+        } else {
+            $('#prePage').addClass('disabled');
+        }
+        if(json.hasNextPage) {
+            $('#nextPage').removeClass('disabled');
+        } else {
+            $('#nextPage').addClass('disabled');
+        }
     }
 };
 

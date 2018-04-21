@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%=require('html-loader!./common/html-head.html')%>
+        <title>登录</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="login-title">用户登录</div>
+            <div class="input-group login-item">
+                <input id="username" type="text" class="form-control" placeholder="请输入用户名" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group login-item">
+                <input id="password" type="password" class="form-control" placeholder="请输入密码" aria-describedby="basic-addon1">
+            </div>
+            <button type="button" class="btn btn-primary btn-width" id="submit">登录</button>
+        </div>
+    </div>
+</body>
+
+</html>

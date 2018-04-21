@@ -2,7 +2,7 @@
  * @Author: wangtao 
  * @Date: 2018-04-19 09:54:35 
  * @Last Modified by: wangtao
- * @Last Modified time: 2018-04-19 16:16:00
+ * @Last Modified time: 2018-04-19 20:23:29
  */
 
 const path = require('path');
@@ -33,7 +33,9 @@ const webpackConfig = {
         'index': './src/page/index/index.js',
         'category-list': './src/page/category-list/category-list.js',
         'product-list': './src/page/product-list/product-list.js',
-        'order-list': './src/page/order-list/order-list.js'
+        'product-detail': './src/page/product-detail/product-detail.js',
+        'order-list': './src/page/order-list/order-list.js',
+        'login': './src/page/login/login.js'
     },
     //出口
     output: {
@@ -73,9 +75,11 @@ const webpackConfig = {
         //将css文件单独打包插件
         new ExtractTextPlugin("css/[name].css"),
         //处理html
+        new HtmlWebpackPlugin(getHtmlConfig('', 'login')),
         new HtmlWebpackPlugin(getHtmlConfig('', 'index')),
         new HtmlWebpackPlugin(getHtmlConfig('', 'category-list')),
         new HtmlWebpackPlugin(getHtmlConfig('', 'product-list')),
+        new HtmlWebpackPlugin(getHtmlConfig('', 'product-detail')),
         new HtmlWebpackPlugin(getHtmlConfig('', 'order-list'))
     ],
     resolve: {
