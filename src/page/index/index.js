@@ -16,12 +16,16 @@ const service = {
             let data = {
                 pageNum: parseInt($.trim($('#curPage').html())) - 1
             }
+            if($(this).hasClass('disabled'))
+                return;
             _this.query(data);
         });
         $('#nextPage').click(function() {
             let data = {
                 pageNum: parseInt($.trim($('#curPage').html())) + 1
             }
+            if($(this).hasClass('disabled'))
+                return;
             _this.query(data);
         });
         $('#submit').click(function() {

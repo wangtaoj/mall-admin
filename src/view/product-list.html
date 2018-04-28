@@ -70,28 +70,64 @@
             </div>
         </div>
         <%=require('html-loader!./common/footer.html')%>
-        <!-- 详情模态框 -->
-        <div id="detailDialog" class="modal fade" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
+        <!-- 添加商品的模态框 -->
+        <div id="addDialog" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-width" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        <h4 class="modal-title">Modal title</h4>
+                        <h4 class="modal-title">添加商品</h4>
                     </div>
                     <div class="modal-body">
-                        <p>One fine body&hellip;</p>
+                        <div id="errorBox" class="error" role="alert"></div>
+                        <div class="input-group product-item">
+                            <span class="input-group-addon">商品名称</span>
+                            <input id="name" type="text" class="form-control width" placeholder="请输入商品名称">
+                        </div>
+                        <div class="input-group  product-item">
+                            <span class="input-group-addon">商品标题</span>
+                            <input id="subtitle" type="text" class="form-control width" placeholder="请输入商品描述" >
+                        </div>
+                        <div class="input-group  product-item">
+                            <span class="input-group-addon">所属分类</span>
+                            <select id="categorys" class="form-control" style="width: 200px;margin-right: 20px;">
+                                <option value="0">请选择分类</option>
+                            </select>
+                            <select id="childCategorys" class="form-control" style="width: 200px;">
+                            </select>
+                        </div>
+                        <div class="input-group  product-item">
+                            <span class="input-group-addon">商品价格</span>
+                            <input id="price" type="text" class="form-control width" placeholder="请输入商品价格">
+                        </div>
+                        <div class="input-group  product-item">
+                            <span class="input-group-addon">商品库存</span>
+                            <input id="stock" type="text" class="form-control width" placeholder="请输入商品库存">
+                        </div>
+                        <div class="input-group  product-item">
+                            <span class="input-group-addon">商品图片</span>
+                            <button id="uploadImage" onclick="document.getElementById('image').click();">上传图片</button>
+                            <input id="image" type="file" accept="image/gif,image/jpeg,image/jpg,image/png" style="display: none;" >
+                        </div>
+                        <div id="imageArea" style="margin-top: 5px;margin-left: 10px;">
+                        </div>
+                        <div class="input-group  product-item">
+                            <span class="detail-span">商品详情</span>
+                            <div style="width: 750px;margin-top: 7px;">
+                                <textarea id="editor" autofocus></textarea>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">放弃</button>
+                        <button id="save" type="button" class="btn btn-primary">保存</button>
                     </div>
                 </div>
                 <!-- /.modal-content -->
             </div>
-            <!-- /.modal-dialog -->
+            <!-- /.modal-dialog  -->
         </div>
 </body>
-
 </html>

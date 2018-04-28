@@ -1,7 +1,6 @@
 require('./style.css');
 require('page/common/nav/nav.js');
 require('page/common/footer/style.css');
-const $ = require('jquery');
 const util = require('utils/util.js');
 
 const service = {
@@ -25,7 +24,11 @@ const service = {
     },
     showData: function(json) {
         $('#name').val(json.name);
-        $('#subTitle').val(json.subtitle);
+        $('#subtitle').val(json.subtitle);
+        let imgUrls = json.subImages.split(',');
+        for(i = 0; i < imgUrls.length; i++) {
+            this.showImage(imgUrls[i]);
+        }
         let status = new Map();
         status.set(1, '在售');
         status.set(2, '下架');
@@ -35,6 +38,10 @@ const service = {
         $('#price').val(json.price);
         $('#stock').val(json.stock);
         $('#detail').html(json.detail);
+    },
+    showImage: function(url) {
+        let $img = "<img width='150px' height='150px' src='" + url + "'></img>  ";
+        $('#imageArea').append($img);
     },
 }
 $(function() {

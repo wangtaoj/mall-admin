@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%=require('html-loader!./common/html-head.html')%>
+        <title>编辑商品</title>
+</head>
+
+<body>
+    <%=require('html-loader!./common/nav.html')%>
+        <div class="container">
+            <div class="content">
+                <div id="errorBox" class="error" role="alert"></div>
+                <input id="id" type="hidden">
+                <div class="input-group product-item">
+                    <span class="input-group-addon">商品名称</span>
+                    <input id="name" type="text" class="form-control width" placeholder="请输入商品名称">
+                </div>
+                <div class="input-group  product-item">
+                    <span class="input-group-addon">商品标题</span>
+                    <input id="subtitle" type="text" class="form-control width" placeholder="请输入商品描述">
+                </div>
+                <div class="input-group  product-item">
+                    <span class="input-group-addon">所属分类</span>
+                    <select id="categorys" class="form-control" style="width: 215px;margin-right: 20px;">
+                        <option value="0">请选择分类</option>
+                    </select>
+                    <select id="childCategorys" class="form-control" style="width: 215px;">
+                    </select>
+                </div>
+                <div class="input-group  product-item">
+                    <span class="input-group-addon">商品状态</span>
+                    <select id="status" class="form-control width">
+                    </select>
+                </div>
+                <div class="input-group  product-item">
+                    <span class="input-group-addon">商品价格</span>
+                    <input id="price" type="text" class="form-control width" placeholder="请输入商品价格">
+                </div>
+                <div class="input-group  product-item">
+                    <span class="input-group-addon">商品库存</span>
+                    <input id="stock" type="text" class="form-control width" placeholder="请输入商品库存">
+                </div>
+                <div class="input-group  product-item">
+                    <span class="input-group-addon">商品图片</span>
+                    <button id="uploadImage" onclick="document.getElementById('image').click();">上传图片</button>
+                    <input id="image" type="file" accept="image/gif,image/jpeg,image/jpg,image/png" style="display: none;">
+                </div>
+                <div id="imageArea" style="margin-top: 5px;margin-left: 10px;">
+
+                </div>
+                <div class="input-group  product-item">
+                    <span class="detail-span">商品详情</span>
+                    <div style="width: 850px;margin-top: 7px;">
+                        <textarea id="editor" autofocus></textarea>
+                    </div>
+                </div>
+                <div class="input-group  product-item">
+                    <button id="update" type="button" class="btn btn-primary">更新</button>
+                </div>
+            </div>
+        </div>
+        <%=require('html-loader!./common/footer.html')%>
+</body>
+
+</html>
