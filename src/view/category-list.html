@@ -3,15 +3,82 @@
 
 <head>
     <%=require('html-loader!./common/html-head.html')%>
-    <title>分类列表</title>
+        <title>分类列表</title>
 </head>
 
 <body>
     <%=require('html-loader!./common/nav.html')%>
         <div class="container">
-            分类列表
+            <div class="content">
+                <div class="add-header">
+                    <button id="add" class="btn btn-primary">新增分类</button>
+                </div>
+                <table class="table table-striped mytable">
+                    <tr class="table-header">
+                        <td>id</td>
+                        <td>名字</td>
+                        <td>状态</td>
+                        <td>操作</td>
+                    </tr>
+                </table>
+            </div>
         </div>
-    <%=require('html-loader!./common/footer.html')%>
+        <%=require('html-loader!./common/footer.html')%>
+            <!-- 新增分类模态框 -->
+            <div id="addDialog" class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-width" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title">新增分类</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div id="errorBox" class="error" role="alert"></div>
+                            <div class="input-group category-item">
+                                <span class="input-group-addon">所属父类</span>
+                                <select id="categorys" class="form-control width">
+                                    <option value="0">顶层分类</option>
+                                </select>
+                            </div>
+                            <div class="input-group category-item">
+                                <span class="input-group-addon">分类名称</span>
+                                <input id="categoryName" type="text" class="form-control width" placeholder="请输入分类名称">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">放弃</button>
+                            <button id="save" type="button" class="btn btn-primary">保存</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 编辑分类模态框 -->
+            <div id="editDialog" class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-width" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title">编辑分类</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div id="editErrorBox" class="error edit-error" role="alert"></div>
+                            <input id="id" type="hidden">
+                            <div class="input-group category-item">
+                                <input id="editCategoryName" type="text" class="form-control edit-width" placeholder="请输入分类名称">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">放弃</button>
+                            <button id="edit" type="button" class="btn btn-primary">更新</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 </body>
 
 </html>
