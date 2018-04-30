@@ -36,6 +36,7 @@ const webpackConfig = {
         'product-detail': './src/page/product-detail/product-detail.js',
         'product-edit': './src/page/product-edit/product-edit.js',
         'order-list': './src/page/order-list/order-list.js',
+        'order-detail': './src/page/order-detail/order-detail.js',
         'login': './src/page/login/login.js'
     },
     //出口
@@ -82,7 +83,8 @@ const webpackConfig = {
         new HtmlWebpackPlugin(getHtmlConfig('', 'product-list')),
         new HtmlWebpackPlugin(getHtmlConfig('', 'product-detail')),
         new HtmlWebpackPlugin(getHtmlConfig('', 'product-edit')),
-        new HtmlWebpackPlugin(getHtmlConfig('', 'order-list'))
+        new HtmlWebpackPlugin(getHtmlConfig('', 'order-list')),
+        new HtmlWebpackPlugin(getHtmlConfig('', 'order-detail'))
     ],
     resolve: {
         alias: {

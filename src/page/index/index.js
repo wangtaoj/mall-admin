@@ -2,7 +2,6 @@ require('./style.css');
 require('page/common/nav/nav.js');
 require('page/common/footer/style.css');
 
-const $ = require('jquery');
 const util = require('utils/util.js');
 
 const service = {

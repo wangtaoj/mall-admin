@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <%=require('html-loader!./common/html-head.html')%>
+        <title>订单详情</title>
+</head>
+
+<body>
+    <%=require('html-loader!./common/nav.html')%>
+        <div class="container">
+            <div class="content">
+                <div class="header">订单详情</div>
+                <div class="title">
+                    <span>
+                        <label class="fontColor" id="createTime"></label>
+                    </span>
+                    <span>
+                        <a class="fontColor link" id="userInfo"></a>
+                    </span>
+                    <span>
+                        <label>订单号:</label>
+                        <label class="fontColor" id="orderNo"></label>
+                    </span>
+                    <span>
+                        <label>订单状态:</label>
+                        <label class="fontColor" id="status"></label>
+                    </span>
+
+                    <span>
+                        <label>总金额:</label>
+                        <label class="fontColor" id="totalPrice"></label>
+                        <label class="fontColor" id="payStyle"></label>
+                    </span>
+                </div>
+                <table id="orderDetail" class="table mytable">
+                    <tr style="font-weight: bold;">
+                        <td>商品图片</td>
+                        <td>商品名字</td>
+                        <td>单价</td>
+                        <td>数量</td>
+                        <td>商品总价</td>
+                    </tr>
+                    
+                </table>
+            </div>
+        </div>
+        <%=require('html-loader!./common/footer.html')%>
+</body>
+
+</html>

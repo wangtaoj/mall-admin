@@ -3,15 +3,73 @@
 
 <head>
     <%=require('html-loader!./common/html-head.html')%>
-    <title>订单列表</title>
+        <title>订单列表</title>
 </head>
 
 <body>
     <%=require('html-loader!./common/nav.html')%>
         <div class="container">
-            订单列表
+            <div class="content">
+                <div class="title">
+                    <div class="title-left">
+                        订单列表
+                    </div>
+                    <div class="title-right">
+                        <select class="input-width">
+                            <option value="1">按订单号查询</option>
+                        </select>
+                        <input id="orderNo" type="text" class="input-width" placeholder="订单号" autocomplete="off">
+                        <button class="btn btn-primary" type="button" id="search">搜索</button>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <table class="table table-striped mytable">
+                    <tr class="table-header">
+                        <td>订单号</td>
+                        <td>收件人</td>
+                        <td>订单状态</td>
+                        <td>订单总价</td>
+                        <td>创建时间</td>
+                        <td>操作</td>
+                    </tr>
+                </table>
+                <div>
+                    <div class="myPage">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination pagination-lg">
+                                <li id="prePage">
+                                    <a aria-label="Previous" class="cursor-style">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>... </a>
+                                </li>
+                                <li class="active">
+                                    <a id="curPage">1</a>
+                                </li>
+                                <li>
+                                    <a>... </a>
+                                </li>
+                                <li id="nextPage">
+                                    <a aria-label="Next" class="cursor-style">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="pageNum">
+                        <input id="pageNum" type="text">
+                    </div>
+                    <div class="btn-container">
+                        <button type="button" class="btn btn-primary btn-width" id="submit">GO</button>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
         </div>
-    <%=require('html-loader!./common/footer.html')%>
+        <%=require('html-loader!./common/footer.html')%>
 </body>
 
 </html>

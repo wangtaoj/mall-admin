@@ -1,12 +1,19 @@
 .content {
-    width: 300px;
-    margin: 100px auto;
+    width: 350px;
+    height: 200px;
+    margin: 150px auto;
+    border: 1px solid #eee;
+}
+
+.content .login-box {
+    width: fit-content;
+    margin: 0px auto;
 }
 
 .content .login-title {
     width: 300px;
     text-align: center;
-    margin-bottom: 10px;
+    margin: 15px 0px;
     font-weight: bold;
     font-size: 16px;
 }

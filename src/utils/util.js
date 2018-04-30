@@ -80,9 +80,14 @@ const util = {
         return null;
     },
     dateToStr: function(data) {
-        return data.getFullYear() + "-" + (data.getMonth() + 1) + "-" + 
-        data.getDate() + " " + data.getHours() + ":" + 
-        data.getMinutes() + ":" + data.getSeconds();
+        return data.getFullYear() + "-" + this.fillZero(data.getMonth() + 1) + "-" + 
+        this.fillZero(data.getDate()) + " " + this.fillZero(data.getHours()) + ":" + 
+        this.fillZero(data.getMinutes()) + ":" + this.fillZero(data.getSeconds());
+    },
+    fillZero: function(number) {
+        if(number <= 9)
+            return '0' + number;
+        return number + '';
     },
     showPage: function(json) {
         if(json.hasPreviousPage) {

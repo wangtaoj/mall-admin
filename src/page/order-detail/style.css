@@ -1,0 +1,51 @@
+.content {
+    width: 900px;
+    margin: 30px auto;
+}
+
+.header {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding-left: 18px;
+    border-bottom: 1px solid white;
+}
+
+.title {
+    background-color: #f5f5f5;
+    padding: 0px 18px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    color: #aaa;
+}
+
+.title .fontColor {
+    color: #333;
+}
+
+.title label {
+    margin: 0px 0px;
+    font-weight: normal;
+}
+
+.title a {
+    text-decoration: none;
+ }
+
+ .title a:hover {
+    color: red;
+ }
+
+.title span {
+   margin-right: 65px;
+}
+
+.mytable {
+    width: 900px;
+    text-align: center;
+}
+
+.mytable tr  .center{
+    vertical-align: middle;
+}

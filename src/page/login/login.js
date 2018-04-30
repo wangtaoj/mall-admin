@@ -1,8 +1,6 @@
 require('./style.css');
 
-const $ = require('jquery');
 const util = require('utils/util.js');
-
 const service = {
     init: function() {
         this.bindEvent();
@@ -36,8 +34,11 @@ const service = {
             url: util.getServletUrl('/manage/user/login.do'),
             data: data,
             doSuccess: function(json, msg) {
-                
-                window.location.href = decodeURIComponent(util.getParam(window.location.href, 'redirect')) || './index.html';
+                let redirctUrl = util.getParam(window.location.href, 'redirect');
+                if(redirctUrl == null)
+                    window.location.href = './index.html';
+                else
+                    window.location.href = decodeURIComponent(redirctUrl);
             },
             doError: function(errMsg) {
                 alert(errMsg);

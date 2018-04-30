@@ -2,12 +2,13 @@
  * @Author: wangtao 
  * @Date: 2018-04-19 12:37:09 
  * @Last Modified by: wangtao
- * @Last Modified time: 2018-04-22 00:43:48
+ * @Last Modified time: 2018-04-30 18:25:37
  */
 const util = require('utils/util.js');
 const service = {
     init: function() {
         this.switchColor();
+        this.getUsername();
         this.bindEvent();
     },
     bindEvent: function() {
@@ -25,12 +26,24 @@ const service = {
         keys.set('product-detail', 2);
         keys.set('product-edit', 2);
         keys.set('order-list', 3);
+        keys.set('order-detail', 3);
         
         let url = window.location.href;
         let key = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.'));
         $('.clickColor').eq(keys.get(key)).addClass('active');
     },
-
+    getUsername: function() {
+        util.request({
+            type: 'post',
+            url: util.getServletUrl('/manage/user/get_username.do'),
+            doSuccess: function(json, msg) {
+                $('#user').text(json.username);
+            },
+            doError: function(errMsg) {
+                alert(errMsg);
+            }
+        });
+    },
     logout: function() {
         util.request({
             type: 'post',
