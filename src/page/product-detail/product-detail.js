@@ -26,8 +26,8 @@ const service = {
         $('#name').val(json.name);
         $('#subtitle').val(json.subtitle);
         let imgUrls = json.subImages.split(',');
-        for(i = 0; i < imgUrls.length; i++) {
-            this.showImage(imgUrls[i]);
+        for(let i = 0; i < imgUrls.length; i++) {
+            this.showImage(json.imageHost + imgUrls[i]);
         }
         let status = new Map();
         status.set(1, '在售');

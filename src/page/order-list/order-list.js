@@ -122,7 +122,7 @@ const service = {
         let orders = json.list;
         $('.table tr:gt(0)').remove();
         for (let i = 0; i < orders.length; i++) {
-            $tr = $('<tr></tr>');
+            let $tr = $('<tr></tr>');
             $tr.append('<td>' + orders[i].orderNo + '</td>');
             let name = orders[i].shippingVo == null ? '' : orders[i].shippingVo.receiverName;
             $tr.append('<td>' + name + '</td>');

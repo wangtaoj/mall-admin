@@ -103,7 +103,7 @@ const service = {
     showData: function(categorys, flag) {
         $('.table tr:gt(0)').remove();
         for(let i = 0; i < categorys.length; i++) {
-            $tr = $('<tr></tr>');
+            let $tr = $('<tr></tr>');
             $tr.append('<td>' + categorys[i].id + '</td>');
             $tr.append('<td>' + categorys[i].name + '</td>');
             let map = new Map();
@@ -160,7 +160,7 @@ const service = {
         });
     },
     //更新分类名字
-    update: function(data) {
+    update: function(data, $td) {
         util.request({
             type: 'post',
             url: util.getServletUrl('/manage/category/set_category_name.do'),
@@ -168,6 +168,7 @@ const service = {
             doSuccess: function(json, msg) {
                 $('#errorBox').hide();
                 alert(msg);
+                window.location.reload();
             },
             doError: function(errMsg) {
                 alert(errMsg);

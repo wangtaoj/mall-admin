@@ -79,9 +79,9 @@ const service = {
             let imgUrls = '';
             $imgs.each(function(index, element) {
                 if(index < $imgs.length - 1)
-                    imgUrls = imgUrls + $(this).attr('src') + ',';
+                    imgUrls = imgUrls + util.getUriFromUrl($(this).attr('src')) + ',';
                 else
-                    imgUrls = imgUrls + $(this).attr('src');
+                    imgUrls = imgUrls + util.getUriFromUrl($(this).attr('src'));
             });
             let product = {
                 name: $.trim($('#name').val()),
@@ -122,7 +122,7 @@ const service = {
         status.set(2, '下架');
         status.set(3, '弃用');
         for(let i = 0; i < products.length; i++) {
-            $tr = $('<tr></tr>');
+            let $tr = $('<tr></tr>');
             $tr.append('<td>' + products[i].id + '</td>');
             $tr.append('<td>' + products[i].name + '</td>');
             $tr.append('<td>' + products[i].price + '</td>');

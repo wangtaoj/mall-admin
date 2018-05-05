@@ -60,9 +60,9 @@ const service = {
             let imgUrls = '';
             $imgs.each(function(index, element) {
                 if(index < $imgs.length - 1)
-                    imgUrls = imgUrls + $(this).attr('src') + ',';
+                    imgUrls = imgUrls + util.getUriFromUrl($(this).attr('src')) + ',';
                 else
-                    imgUrls = imgUrls + $(this).attr('src');
+                    imgUrls = imgUrls + util.getUriFromUrl($(this).attr('src'));
             });
             let product = {
                 id: $.trim($('#id').val()),
@@ -87,14 +87,14 @@ const service = {
         $('#name').val(json.name);
         $('#subtitle').val(json.subtitle);
         let imgUrls = json.subImages.split(',');
-        for(i = 0; i < imgUrls.length; i++) {
-            this.showImage(imgUrls[i]);
+        for(let i = 0; i < imgUrls.length; i++) {
+            this.showImage(json.imageHost + imgUrls[i]);
         }
         let status = new Map();
         status.set(1, '在售');
         status.set(2, '下架');
         status.set(3, '弃用');
-        for(i = 1; i <= 3; i++) {
+        for(let i = 1; i <= 3; i++) {
             let option;
             if(i === json.status) {
                 option = "<option selected = 'selected' value='" + i + "'>" + status.get(i) + "</option>";

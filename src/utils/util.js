@@ -79,6 +79,17 @@ const util = {
         }
         return null;
     },
+    //从一个完整的url中获取uri
+    getUriFromUrl: function(url) {
+        if(url) {
+            let temp = url.replace('//', '');
+            let i = temp.indexOf('/');
+            if(i != -1) {
+                return temp.substring(i + 1);
+            }
+        }
+        return null;
+    },
     dateToStr: function(data) {
         return data.getFullYear() + "-" + this.fillZero(data.getMonth() + 1) + "-" + 
         this.fillZero(data.getDate()) + " " + this.fillZero(data.getHours()) + ":" + 

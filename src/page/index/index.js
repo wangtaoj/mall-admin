@@ -52,7 +52,7 @@ const service = {
         let users = json.list;
         $('.table tr:gt(0)').remove();
         for(let i = 0; i < users.length; i++) {
-            $tr = $('<tr></tr>');
+            let $tr = $('<tr></tr>');
             $tr.append('<td>' + users[i].username + '</td>');
             $tr.append('<td>' + users[i].email + '</td>');
             $tr.append('<td>' + users[i].phone + '</td>');

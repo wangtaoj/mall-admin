@@ -60,7 +60,7 @@ const service = {
         let products = orderVo.orderItemVoList;
         $('#orderDetail tr:gt(0)').remove();
         if (products != null) {
-            for (i = 0; i < products.length; i++) {
+            for (let i = 0; i < products.length; i++) {
                 let $tr = $('<tr></tr>');
                 let imgUrl = orderVo.imageHost + products[i].productImage;
                 $tr.append("<td class='center'><img width='60' height='60' src='" + imgUrl + "'></img></td>");
