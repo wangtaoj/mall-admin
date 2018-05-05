@@ -2,7 +2,7 @@
  * @Author: wangtao 
  * @Date: 2018-04-19 09:54:35 
  * @Last Modified by: wangtao
- * @Last Modified time: 2018-04-22 23:50:24
+ * @Last Modified time: 2018-05-05 17:06:43
  */
 
 const path = require('path');
@@ -14,7 +14,7 @@ const ENVIRONMENT = process.env.ENVIRONMENT || 'dev';
 
 //返回一个符合HtmlWebpackPlugin插件所需要的对象
 var getHtmlConfig = function (dir, name) {
-    if(dir.length > 0)
+    if (dir.length > 0)
         dir = dir + '/';
     return {
         template: './src/view/' + dir + '/' + name + '.html',
@@ -63,6 +63,17 @@ const webpackConfig = {
             {
                 test: /\.(gif|png|jpg|woff|svg|eot|ttf)\??.*$/,
                 use: 'url-loader?limit=5120&name=resource/[name].[ext]'
+            },
+            //使用babel-loader, 解决不能使用ES6语法
+            {
+                test: /\.js$/,
+                exclude: /(node_modules)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['env']
+                    }
+                }
             }
         ]
     },
@@ -95,7 +106,7 @@ const webpackConfig = {
         }
     }
 };
-if(ENVIRONMENT === 'DEV') {
+if (ENVIRONMENT === 'DEV') {
     webpackConfig.entry.common.push('webpack-dev-server/client?http://localhost:9000/');
 }
 module.exports = webpackConfig;
