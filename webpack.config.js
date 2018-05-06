@@ -2,7 +2,7 @@
  * @Author: wangtao 
  * @Date: 2018-04-19 09:54:35 
  * @Last Modified by: wangtao
- * @Last Modified time: 2018-05-05 17:06:43
+ * @Last Modified time: 2018-05-07 01:47:07
  */
 
 const path = require('path');
@@ -19,6 +19,7 @@ var getHtmlConfig = function (dir, name) {
     return {
         template: './src/view/' + dir + '/' + name + '.html',
         filename: 'view/' + dir + name + '.html',
+        favicon: './favicon.ico',
         inject: true,
         hash: false,
         //需要引入的js, 值对应于entry里的属性名
@@ -46,7 +47,7 @@ const webpackConfig = {
         //输出的文件名, 支持路径写法
         filename: 'js/[name].js',
         //访问的公共路径, 打包时所有的相对路径都会使用这个路径了
-        publicPath: '/dist/'
+        publicPath: '/'
     },
     //模块
     module: {

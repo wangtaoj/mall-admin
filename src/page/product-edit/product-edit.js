@@ -1,3 +1,10 @@
+/*
+ * @Author: wangtao 
+ * @Date: 2018-05-07 02:19:00 
+ * @Last Modified by: wangtao
+ * @Last Modified time: 2018-05-07 02:43:26
+ */
+
 require('./style.css');
 require('page/common/nav/nav.js');
 require('page/common/footer/style.css');
@@ -86,7 +93,7 @@ const service = {
         $('#id').val(json.id);
         $('#name').val(json.name);
         $('#subtitle').val(json.subtitle);
-        let imgUrls = json.subImages.split(',');
+        let imgUrls = json.subImages == null ? [] : json.subImages.split(',');
         for(let i = 0; i < imgUrls.length; i++) {
             this.showImage(json.imageHost + imgUrls[i]);
         }
@@ -124,21 +131,16 @@ const service = {
         });
     },
     showCategory: function(sourceEle, categorys, defaultCategoryId) {
-        //$('. tr:gt(0)').remove();
-        if(sourceEle.attr('id') === 'categorys') {
-            sourceEle.children('option:gt(0)').remove();
-            $('#childCategorys').children().remove();
-        }
-        else
-            sourceEle.children().remove();
+        let _html = '';
         for(let i = 0; i < categorys.length; i++) {
             let option;
             if(categorys[i].id === defaultCategoryId)
                 option = "<option selected = 'selected' value='" + categorys[i].id + "'>" + categorys[i].name + "</option>";
             else
                 option = "<option value='" + categorys[i].id + "'>" + categorys[i].name + "</option>";
-            sourceEle.append(option);
+            _html = _html + option;
         }
+        sourceEle.html(_html);
     },
     uploadImage: function(form) {
         let _this = this;

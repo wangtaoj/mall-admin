@@ -1,3 +1,10 @@
+/*
+ * @Author: wangtao 
+ * @Date: 2018-05-07 02:15:41 
+ * @Last Modified by:   wangtao 
+ * @Last Modified time: 2018-05-07 02:15:41 
+ */
+
 require('./style.css');
 require('page/common/nav/nav.js');
 require('page/common/footer/style.css');
@@ -25,7 +32,7 @@ const service = {
     showData: function(json) {
         $('#name').val(json.name);
         $('#subtitle').val(json.subtitle);
-        let imgUrls = json.subImages.split(',');
+        let imgUrls = json.subImages == null ? [] : json.subImages.split(',');
         for(let i = 0; i < imgUrls.length; i++) {
             this.showImage(json.imageHost + imgUrls[i]);
         }
