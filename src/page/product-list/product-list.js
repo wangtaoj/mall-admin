@@ -254,7 +254,6 @@ const service = {
             url: util.getServletUrl('/manage/product/save.do'),
             data: product,
             doSuccess: function(json, msg) {
-                $('#errorBox').hide();
                 alert(msg);
             },
             doError: function(errMsg) {
@@ -263,7 +262,7 @@ const service = {
         });
     },
     showError: function(errMsg) {
-        $('#errorBox').hide(100).show(500).text(errMsg);
+        alert(errMsg);
     }
 }
 

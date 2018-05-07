@@ -2,7 +2,7 @@
  * @Author: wangtao 
  * @Date: 2018-05-07 02:19:00 
  * @Last Modified by: wangtao
- * @Last Modified time: 2018-05-07 02:43:26
+ * @Last Modified time: 2018-05-07 20:56:57
  */
 
 require('./style.css');
@@ -76,11 +76,13 @@ const service = {
                 name: $.trim($('#name').val()),
                 subtitle: $.trim($('#subtitle').val()),
                 categoryId: $('#childCategorys').val(),
-                subImages: imgUrls,
+                status: $('#status').val(),
                 price: $.trim($('#price').val()),
                 stock: $.trim($('#stock').val()),
                 detail: editor.getValue()
             }
+            if(imgUrls !== '')
+                product.subImages = imgUrls;
             let res = _this.validData(product);
             if(res.success) {
                 _this.save(product);
@@ -93,7 +95,7 @@ const service = {
         $('#id').val(json.id);
         $('#name').val(json.name);
         $('#subtitle').val(json.subtitle);
-        let imgUrls = json.subImages == null ? [] : json.subImages.split(',');
+        let imgUrls = json.subImages == null || json.subImages=== '' ? [] : json.subImages.split(',');
         for(let i = 0; i < imgUrls.length; i++) {
             this.showImage(json.imageHost + imgUrls[i]);
         }
@@ -201,8 +203,8 @@ const service = {
             url: util.getServletUrl('/manage/product/save.do'),
             data: product,
             doSuccess: function(json, msg) {
-                $('#errorBox').hide();
                 alert(msg);
+                window.location.reload();
             },
             doError: function(errMsg) {
                 alert(errMsg);
@@ -210,7 +212,7 @@ const service = {
         });
     },
     showError: function(errMsg) {
-        $('#errorBox').hide(100).show(500).text(errMsg);
+        alert(errMsg);
     }
 }
 

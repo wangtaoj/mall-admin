@@ -1,8 +1,8 @@
 /*
  * @Author: wangtao 
  * @Date: 2018-05-07 02:15:41 
- * @Last Modified by:   wangtao 
- * @Last Modified time: 2018-05-07 02:15:41 
+ * @Last Modified by: wangtao
+ * @Last Modified time: 2018-05-07 20:48:16
  */
 
 require('./style.css');
@@ -32,7 +32,7 @@ const service = {
     showData: function(json) {
         $('#name').val(json.name);
         $('#subtitle').val(json.subtitle);
-        let imgUrls = json.subImages == null ? [] : json.subImages.split(',');
+        let imgUrls = json.subImages == null || json.subImages=== '' ? [] : json.subImages.split(',');
         for(let i = 0; i < imgUrls.length; i++) {
             this.showImage(json.imageHost + imgUrls[i]);
         }

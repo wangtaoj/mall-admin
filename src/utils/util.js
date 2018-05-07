@@ -50,7 +50,7 @@ const util = {
     },
     doLogin: function() {
         let curUrl = window.location.href;
-        window.location.href = '/dist/view/login.html?redirect=' + encodeURIComponent(curUrl);
+        window.location.href = './login.html?redirect=' + encodeURIComponent(curUrl);
     },
     getServletUrl: function(uri) {
         return host + uri;
