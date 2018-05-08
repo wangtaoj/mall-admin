@@ -3,7 +3,9 @@
 ### 工具版本
 **node.js 8.11.1** <br/>
 **webpack 3.5.5**
-### npm命令
+
+### npm知识
+#### npm命令
 npm init                     #引导创建一个package.json, 项目初始化。
 npm install XXX -g           #全局安装<br/>
 npm install xxx@version      #指定版本号
@@ -17,8 +19,7 @@ npm -v                       #查看npm版本<br/>
 注:<br/>
 **--save-dev, --save会将安装的组件添加到package.json, --save-dev只是开发需要, --save是生产环境也需要的组件, 比如jqury。**
 
-
-### 安装项目需要的环境依赖
+#### 安装依赖
 1. 安装webpack <br/>
 **npm install webpack@3.5.5 --save-dev**
 2. 安装css loader <br/>
@@ -49,3 +50,15 @@ npm -v                       #查看npm版本<br/>
 **b. url-loader, file-loader作用于图片, 字体等资源**<br/>
 **c. html-webpack-plugin作用于html** <br/>
 **d. html-loader作用于html, 可以在目标html文件中使用<%=require('html-loader!./common/nav.html')%>语句从而导入指定的html, 对于公共的如header.html, footer.html便可以使用。**
+
+### 本项目操作
+**a. 需要本地有node环境, 使用node.js 8.11.1**<br/>
+**b. 全局安装webpack** <br/>
+**npm install -g webpack@3.5.5 --save-dev** <br/>
+**c. 安装项目所有环境依赖** <br/>
+**npm install** <br/>
+**d. 项目开发预览** <br/>
+**npm run dev_win(window) || npm run dev(linux)**<br/>
+localhost:9000/view/index.html <br/>
+**e. 生产环境使用** <br/>
+**npm run dist_win(window) || npm run dist(linux)**
