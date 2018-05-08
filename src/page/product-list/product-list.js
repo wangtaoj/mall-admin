@@ -6,8 +6,6 @@ require('simditor/lib/module.js');
 require('simditor/lib/hotkeys.js');
 require('simditor/lib/uploader.js');
 const Simditor = require('simditor/lib/simditor.js');
-
-//const $ = require('jquery');
 const util = require('utils/util.js');
 
 const service = {

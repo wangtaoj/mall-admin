@@ -1,7 +1,6 @@
 /**
  * 封装整个项目的通用模块
  */
-const $ = require('jquery');
 const host = '';
 const util = {
     /*

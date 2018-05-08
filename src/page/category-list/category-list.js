@@ -4,43 +4,75 @@ require('page/common/footer/style.css');
 
 const util = require('utils/util.js');
 
+/**
+ * 模态框方法封装
+ */
+const modalDialog = {
+    //初始化模态框
+    init: function(selector) {
+        $(selector).modal({
+            backdrop: false,
+            show: false
+        });
+    },
+    // 打开模态框
+    show: function(selector) {
+        $(selector).modal('show');
+    },
+    //隐藏模态框
+    hide: function(selector) {
+        $(selector).modal('hide');
+    }
+}
+
+/**
+ * 业务封装
+ */
 const service = {
     init: function() {
-        this.query(0, 1);
+        this.query(this.info.categoryId, 1);
         this.bindEvent();
+        modalDialog.init('#editDialog');
+        modalDialog.init('#addDialog');
+    },
+    info: {
+        //点击更新按钮时用来记录是哪一行触发的按钮事件
+        $curTr: null,
+        //记住当前页面的父分类ID, 默认顶层分类为0
+        categoryId: 0,
     },
     bindEvent: function() {
         let _this = this;
         //通过on函数绑定动态生成的编辑按钮事件
         $('.table').on('click', '.editBtn', function() {
-            $('#editDialog').modal({
-                backdrop: false,
-                show: true
-            });
+            modalDialog.show('#editDialog');
+            //绑定要修改的分类id, 用于提交更新
             $('#id').val($(this).attr('name'));
-            $('#editErrorBox').hide();
+            //绑定当前触发事件的行元素
+            let temp = $(this).parents('tr');
+            _this.info.$curTr = temp;
+            $('#editCategoryName').val(temp.children().eq(1).text());
         });
 
         //通过on函数绑定动态生成的查看子分类按钮事件
         $('.table').on('click', '.showChildren', function() {
-            let categoryId = $(this).attr('name');
+            let categoryId = parseInt($(this).attr('name'));
+            _this.info.categoryId = categoryId || 0;
             _this.query(categoryId, 1);
         });
 
         //通过on函数绑定动态生成的弃用分类按钮事件
         $('.table').on('click', '.remove', function() {
-            let categoryId = $(this).attr('name');
-            let data = {'categoryId': categoryId};
-            _this.remove(data);
+            if(confirm('会删除所有子分类, 你确定要删除吗?')) {
+                let categoryId = $(this).attr('name');
+                let data = {'categoryId': categoryId};
+                _this.remove(data);
+            }
         });
 
         //新增分类模态框
         $('#add').click(function() {
-            $('#addDialog').modal({
-                backdrop: false,
-                show: true
-            });
-            $('#errorBox').hide();
+            modalDialog.show('#addDialog');
             _this.query(0, 2);
         });
 
@@ -54,7 +86,7 @@ const service = {
             if(res.success) {
                 _this.add(data);
             } else {
-                _this.showError(res.msg);
+                alert(res.msg);
             }
         });
 
@@ -65,7 +97,7 @@ const service = {
                 categoryName: $.trim($('#editCategoryName').val())
             }
             if(util.isEmpty(data.categoryName)) {
-                $('#editErrorBox').hide().show(500).text('请输入分类名称');
+                alert('请输入分类名称');
             } else {
                 _this.update(data);
             }
@@ -108,7 +140,6 @@ const service = {
             $tr.append('<td>' + categorys[i].name + '</td>');
             let map = new Map();
             map.set(true, '正常');
-            map.set(false, '弃用');
             let removeLink = "&nbsp;&nbsp;<a name='" + categorys[i].id + "' class='link remove'>删除</a>"
             $tr.append('<td>' + map.get(categorys[i].status) + removeLink + '</td>');
             let a1 = '';
@@ -119,13 +150,20 @@ const service = {
             $('.table').append($tr);
         }
     },
-    //新增或修改下拉框数据
+    //新增时下拉框数据
     showCategory: function(categorys) {
-        $('#categorys option:gt(0)').remove();
+        let template = '<option value="0">顶层分类</option>';
         for(let i = 0; i < categorys.length; i++) {
-            let option = "<option value='" + categorys[i].id + "'>" + "顶层分类/" + categorys[i].name + "</option>";
-            $('#categorys').append(option);
+            if(this.info.categoryId === categorys[i].id) {
+                template += "<option selected='selected' value='" + categorys[i].id + "'>" 
+                         + "顶层分类/" + categorys[i].name + "</option>";
+            }
+            else {
+                template += "<option value='" + categorys[i].id + "'>" + "顶层分类/" 
+                         + categorys[i].name + "</option>";
+            }
         }
+        $('#categorys').html(template);
     },
     //检查数据
     validData: function(data) {
@@ -146,13 +184,15 @@ const service = {
     },
     //添加
     add: function(data) {
+        let _this = this;
         util.request({
             type: 'post',
             url: util.getServletUrl('/manage/category/add_category.do'),
             data: data,
             doSuccess: function(json, msg) {
-                $('#errorBox').hide();
                 alert(msg);
+                modalDialog.hide("#addDialog");
+                _this.query(_this.info.categoryId, 1);
             },
             doError: function(errMsg) {
                 alert(errMsg);
@@ -160,15 +200,16 @@ const service = {
         });
     },
     //更新分类名字
-    update: function(data, $td) {
+    update: function(data) {
+        let _this = this;
         util.request({
             type: 'post',
             url: util.getServletUrl('/manage/category/set_category_name.do'),
             data: data,
             doSuccess: function(json, msg) {
-                $('#errorBox').hide();
                 alert(msg);
-                window.location.reload();
+                _this.info.$curTr.children().eq(1).text(data.categoryName);
+                modalDialog.hide('#editDialog');
             },
             doError: function(errMsg) {
                 alert(errMsg);
@@ -184,16 +225,12 @@ const service = {
             data: data,
             doSuccess: function(json, msg) {
                 alert(msg);
-                _this.query(0, 1);
+                _this.query(_this.info.categoryId, 1);
             },
             doError: function(errMsg) {
                 alert(errMsg);
             }
         });
-    },
-    //显示错误
-    showError: function(errMsg) {
-        $('#errorBox').hide(100).show(500).text(errMsg);
     }
 }
 
